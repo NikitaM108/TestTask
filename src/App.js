@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+ import React from 'react';
+ import { YMaps,  Map, RouteButton, SearchControl, Placemark} from 'react-yandex-maps';
+ import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+ 
+ 
+
+ const mapState = { center: [55.755768, 37.617671], zoom: 10 };
+ 
+
+ class App extends React.Component  {
+	 
+	 state= { width: 600, height: 600, objects:['']};
+
+	 
+
+		render() {
+			const { width, height,} = this.state; 
+			return(
+		<div >
+			<YMaps query={{
+      apikey: '29429ac3-3bfa-4e98-8f56-ca75a2bdfbea',
+    }}>
+				<div > My awesome application with maps!</div>
+    <div >
+      <Map state={mapState} width={width} height={height}  >
+			<RouteButton options={{ float: 'right' }} />
+			<SearchControl options={{ float: 'left' }} />
+			</Map>
+			<div>	
+		
+			</div>
+			
+			
+		
     </div>
-  );
+
+		
+  </YMaps>
+     
+    </div>
+			)
+		};
 }
+ 
 
 export default App;
+
